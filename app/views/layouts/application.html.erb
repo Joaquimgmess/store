@@ -23,38 +23,42 @@
   </head>
 
   <body>
-    <nav class="bg-white shadow-sm mb-4">
-      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div class="flex items-center space-x-4">
-          <%= link_to "Home", root_path, class: "text-gray-700 hover:text-gray-900" %>
+      <div class="notice"><%= notice %></div>
+
+    <div class="min-h-screen bg-gray-100">
+      <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-16">
+            <div class="flex">
+              <%= link_to "Store", root_path, class: "flex items-center px-2 pt-1 text-gray-900" %>
+            </div>
+            <div class="flex items-center">
+              <div class="ml-4 flex items-center space-x-4">
+                <%= link_to "EN", url_for(locale: :en), class: "text-gray-500 hover:text-gray-700 #{I18n.locale == :en ? 'font-bold' : ''}" %>
+                <%= link_to "ES", url_for(locale: :es), class: "text-gray-500 hover:text-gray-700 #{I18n.locale == :es ? 'font-bold' : ''}" %>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center space-x-4">
-          <% if authenticated? %>
-            <%= button_to "Log out", session_path, 
-                method: :delete, 
-                class: "bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded" %>
-          <% else %>
-            <%= link_to "Login", new_session_path, 
-                class: "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" %>
+      </nav>
+
+      <main class="py-10">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <% if flash[:notice] %>
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+              <%= flash[:notice] %>
+            </div>
           <% end %>
-        </div>
-      </div>
-    </nav>
+          
+          <% if flash[:alert] %>
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              <%= flash[:alert] %>
+            </div>
+          <% end %>
 
-    <main class="container mx-auto px-4">
-      <% if flash[:notice] %>
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-          <%= flash[:notice] %>
+          <%= yield %>
         </div>
-      <% end %>
-      
-      <% if flash[:alert] %>
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
-
-      <%= yield %>
-    </main>
+      </main>
+    </div>
   </body>
 </html>

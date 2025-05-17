@@ -1,0 +1,17 @@
+es:
+  hello: "Hola mundo"
+  products:
+    index:
+      title: "Productos"
+      create_product: "Crear Producto"
+      name: "Nombre"
+      price: "Precio"
+      actions: "Acciones"
+      edit: "Editar"
+      delete: "Eliminar"
+      confirm_delete: "¿Estás seguro?"
+    show:
+      back_to_products: "Volver a productos"
+      edit_product: "Editar este producto"
+      delete_product: "Eliminar este producto"
+      delete_confirmation: "¿Estás seguro de que quieres eliminar este producto?" 

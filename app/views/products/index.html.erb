@@ -1,31 +1,33 @@
 <div class="mx-auto max-w-7xl">
-  <div class="flex justify-between items-center mb-6">
-    <h1 class="text-3xl font-bold">Products</h1>
-    <% if authenticated? %>
-      <%= link_to "New product", new_product_path, 
-          class: "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" %>
-    <% end %>
+  <h1><%= t ".title" %></h1>
+
+  <div class="flex justify-between items-center mb-4">
+    <%= link_to t(".create_product"), new_product_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
   </div>
 
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <% @products.each do |product| %>
-      <div class="bg-white rounded-lg shadow p-6">
-        <h2 class="text-xl font-semibold mb-2"><%= product.name %></h2>
-        <div class="flex justify-between items-center">
-          <div class="space-x-2">
-            <%= link_to "View", product_path(product), 
-                class: "text-blue-500 hover:text-blue-600" %>
-            <% if authenticated? %>
-              <%= link_to "Edit", edit_product_path(product), 
-                  class: "text-gray-500 hover:text-gray-600" %>
-              <%= button_to "Delete", product, 
-                  method: :delete,
-                  class: "text-red-500 hover:text-red-600",
-                  data: { turbo_confirm: "Are you sure?" } %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= t ".name" %></th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= t ".actions" %></th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <% @products.each do |product| %>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <%= link_to product.name, product_path(product), class: "text-indigo-600 hover:text-indigo-900" %>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <%= link_to t(".edit"), edit_product_path(product), class: "text-indigo-600 hover:text-indigo-900" %>
+              <%= link_to t(".delete"), product_path(product), 
+                  data: { turbo_method: :delete, turbo_confirm: t(".confirm_delete") },
+                  class: "ml-2 text-red-600 hover:text-red-900" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

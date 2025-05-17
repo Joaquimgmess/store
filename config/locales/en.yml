@@ -29,3 +29,18 @@
 
 en:
   hello: "Hello world"
+  products:
+    index:
+      title: "Products"
+      create_product: "Create Product"
+      name: "Name"
+      price: "Price"
+      actions: "Actions"
+      edit: "Edit"
+      delete: "Delete"
+      confirm_delete: "Are you sure?"
+    show:
+      back_to_products: "Back to products"
+      edit_product: "Edit this product"
+      delete_product: "Delete this product"
+      delete_confirmation: "Are you sure you want to delete this product?"
