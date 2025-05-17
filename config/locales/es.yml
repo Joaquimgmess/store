@@ -1,5 +1,8 @@
 es:
   hello: "Hola mundo"
+  product_mailer:
+    in_stock:
+      subject: "¡%{product} está disponible nuevamente!"
   products:
     index:
       title: "Productos"

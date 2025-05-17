@@ -16,4 +16,8 @@ Rails.application.routes.draw do
     resources :subscribers, only: [ :create ]
   end
   root "products#index"
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end

@@ -29,6 +29,9 @@
 
 en:
   hello: "Hello world"
+  product_mailer:
+    in_stock:
+      subject: "%{product} is back in stock!"
   products:
     index:
       title: "Products"
